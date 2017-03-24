@@ -1,0 +1,11 @@
+Library/ 
+
+Temp/
+
+obj/
+
+*.csproj
+
+*.unityproj
+
+*.sln
