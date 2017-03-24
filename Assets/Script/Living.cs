@@ -17,7 +17,7 @@ public class Living : MonoBehaviour
     public float dampRateWhenStiff;
 
     // Use this for initialization
-    void Awake()
+    protected virtual void Awake()
     {
         // CSV
         rb2d = GetComponent<Rigidbody2D>();
@@ -75,12 +75,13 @@ public class Living : MonoBehaviour
     }
 
     public void PushedMeback(GameObject pushingObject, float pushForce)
-    // pusingObject pushes this object by pushForce.
+    // pusingObject pushes this object by pushForce. always bounce upwards.
     {
         Vector2 forceVector = (transform.position - pushingObject.transform.position).normalized * pushForce;
+        Vector2 forceVectorPositiveY = new Vector2 (forceVector.x, (forceVector.y > 0) ? forceVector.y : -forceVector.y);
         StartCoroutine(StartPushedStiffDuringTime(stiffTime));
-        rb2d.AddForce(forceVector, ForceMode2D.Impulse);
-        Debug.Log(forceVector);
+        rb2d.AddForce(forceVectorPositiveY, ForceMode2D.Impulse);
+        Debug.Log(forceVectorPositiveY);
         Debug.Log("pushed back");
     }
 

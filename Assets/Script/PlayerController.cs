@@ -82,9 +82,9 @@ public class PlayerController : Living
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Monster")
+        if (other.gameObject.tag == "Monster") // battle.
         {
-            PushedMeback(other.gameObject, 30f);
+            PushedMeback(other.gameObject, other.gameObject.GetComponent<MonsterBasis>().atkPushbackPow);
         }
     }
 

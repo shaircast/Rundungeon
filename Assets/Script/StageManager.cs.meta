@@ -1,10 +1,13 @@
 fileFormatVersion: 2
 guid: 02efed906b1a586498336084d2fedeb4
-timeCreated: 1489485767
+timeCreated: 1490355798
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - player: {fileID: 1604942723073328, guid: 0ce88e0386d0ba748a71aae074a5132c, type: 2}
+  - tile: {instanceID: 0}
+  - roomOrigin: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

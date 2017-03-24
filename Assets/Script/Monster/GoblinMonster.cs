@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GoblinMonster : MonsterBasis
 {
-    void Start()
+    new void Awake()
     {
-
+        base.Awake();
     }
 
     // Update is called once per frame
@@ -15,31 +15,48 @@ public class GoblinMonster : MonsterBasis
         base.Update();
         // goblin's specific moving style.
 
-        // moves only when alert.
-        if (alert)
+
+        if (alert) // alert
         {
-            if (cannotMove != true)
+            if (cannotMove != true) // alert and can move.
             {
-                // left & right
-                if (goRight)
+                if (chasing) // chasing AI.
                 {
-                    rb2d.velocity = new Vector2(moveSpeed, rb2d.velocity.y);
+                    // horizontal
+                    if (target.transform.position.x < transform.position.x) // player is left side of monster.
+                    {
+                        goRight = false;
+                    }
+                    else // player is right side of monster.
+                    {
+                        goRight = true;
+                    }
                 }
-                else
-                {
-                    rb2d.velocity = new Vector2(-moveSpeed, rb2d.velocity.y);
-                }
+
+                BasicMove(); // regardless chasing, do basic move.
             }
-            else // cannotMove is true;
+            else // alert but cannot move.
             {
                 dampMoveExceptFalling();
             }
         }
-        else // sleeping.
+        else // not alert == sleeping.
         {
             dampMoveExceptFalling();
         }
 
+    }
+
+    void BasicMove()
+    {
+        if (goRight)
+        {
+            rb2d.velocity = new Vector2(moveSpeed, rb2d.velocity.y);
+        }
+        else
+        {
+            rb2d.velocity = new Vector2(-moveSpeed, rb2d.velocity.y);
+        }
     }
 
 }
