@@ -21,7 +21,7 @@ public class Living : MonoBehaviour
     {
         // CSV
         rb2d = GetComponent<Rigidbody2D>();
-        stiffTime = 0.5f;
+        stiffTime = 0.6f;
         dampRateWhenStiff = 0.9f; // it would be good to match with damage.
 
         // initialize monster to go right by 50%.
@@ -43,11 +43,11 @@ public class Living : MonoBehaviour
     {
         if (!cannotMove) // only when not stiff.
         {
-            if (rb2d.velocity.x > 0)
+            if (goRight)
             {
                 transform.localScale = new Vector3(-1f, 1f, 0);
             }
-            else if (rb2d.velocity.x < 0)
+            else
             {
                 transform.localScale = new Vector3(1f, 1f, 0);
             }

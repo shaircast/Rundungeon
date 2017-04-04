@@ -5,7 +5,10 @@ using UnityEngine;
 public class PlayerController : Living
 {
     public GameObject stampCheck;
+    public static PlayerController singleton;
 
+    public List<GameObject> inventory;
+    public GameObject[] quickSlot;
     public GameObject weapon;
     public GameObject armor;
     public GameObject accessory1;
@@ -24,6 +27,11 @@ public class PlayerController : Living
     public LayerMask groundTile;
     public int hunger; // 100 -> start losing hp.
 
+    new void Awake()
+    {
+        base.Awake();
+        singleton = this;
+    }
 
     void Start()
     {
@@ -85,7 +93,18 @@ public class PlayerController : Living
         if (other.gameObject.tag == "Monster") // battle.
         {
             PushedMeback(other.gameObject, other.gameObject.GetComponent<MonsterBasis>().atkPushbackPow);
+            
         }
+    }
+
+    void CheckItemInInventory(int index) // show info fo the itme at index in inventory.
+    {
+        inventory[index].GetComponent<Item>().ShowInfo();
+    }
+
+    void UseItemInInventory(int index) // use item at index in inventory
+    {
+        inventory[index].GetComponent<Item>().UseItem();
     }
 
 }

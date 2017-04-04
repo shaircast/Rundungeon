@@ -114,7 +114,7 @@ public class MonsterBasis : Living
     {
         if (other.gameObject.tag == "Player") // battle.
         {
-            PushedMeback(other.gameObject, 30f); // 30f -> player's weapon's property.
+            PushedMeback(other.gameObject, (PlayerController.singleton.weapon == null)? 0f : PlayerController.singleton.weapon.GetComponent<Weapon>().pushbackPower); // 30f -> player's weapon's property.
         }
     }
 
