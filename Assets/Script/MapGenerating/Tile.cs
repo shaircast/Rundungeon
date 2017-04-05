@@ -15,6 +15,7 @@ public class Tile : MonoBehaviour
 
 	void Awake()
 	{
+		gameObject.layer = LayerMask.NameToLayer("Tile");
 		occupied = false;
 	}
 	

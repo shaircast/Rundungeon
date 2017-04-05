@@ -22,6 +22,7 @@ public class WallManager : MonoBehaviour
 			Vector3 offset = new Vector3(0f, StageManager.tileSize * i, 0f);
 			GameObject newBlock = Instantiate(block, gameObject.transform.position + offset, Quaternion.identity) as GameObject;
 			newBlock.name = "Block";
+			newBlock.layer = LayerMask.NameToLayer("Wall");
 			newBlock.transform.parent = gameObject.transform;
 		}
 	}

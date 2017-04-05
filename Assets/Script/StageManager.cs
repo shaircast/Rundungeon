@@ -15,7 +15,7 @@ public class StageManager : MonoBehaviour
 	public GameObject player;
 	public GameObject tile;
 	public GameObject roomOrigin; // at corners;
-	
+
 	public int maxNumOfRooms;
 	public int minNumOfRooms;
 	private int numOfRooms; // by Random.Range.
@@ -33,6 +33,7 @@ public class StageManager : MonoBehaviour
 		//DestroyInactive();
 		SetRooms();
 	}
+
 
 
 	void Initialize() // set variables.

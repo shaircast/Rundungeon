@@ -7,7 +7,6 @@ public class Equipment : Item
 	public int durability;
 	public int strengthNeed;
 	public bool examined;
-	public bool equipped;
 
 	public List<GameObject> buff;
 	// Use this for initialization
@@ -25,17 +24,18 @@ public class Equipment : Item
 		
 	}
 
-	override public void UseItem() // override from Item.
+	override public void UseItem(int index) // override from Item.
 	{
-		base.UseItem();
+		base.UseItem(index);
 		Debug.Log("Equip Useitem");
-		EquipItem(); // specify for Equipments.
+		EquipItem(index); // specify for Equipments.
 	}
 
-	public virtual void EquipItem() // overriden by Weapon/Armor/Accessory
+	public virtual void EquipItem(int index) // overriden by Weapon/Armor/Accessory
 	{
+		// Equipment : move item from inventory to player's slot & make it active.
+		// Unequipment: move item from slot to inventoty and make it inactive.
 		Debug.Log("Equip Equipitem");
-		equipped = true;
 	}
 
 }

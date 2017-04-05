@@ -18,18 +18,30 @@ public class Weapon : Equipment
 	// Update is called once per frame
 	void Update () 
 	{
-		
 	}
 
-	override public void EquipItem() // override from Equipment.
+	override public void EquipItem(int index) // override from Equipment.
 	{
-		base.EquipItem();
+		base.EquipItem(index);
 		Debug.Log("Weapon Equipitem");
-		EquipWeapon(); // specify for Weapon.
+		EquipWeapon(index); // specify for Weapon.
 	}
 
-	public virtual void EquipWeapon() // overriden by each weapon item.
+	public virtual void EquipWeapon(int index) // overriden by each weapon item.
 	{
 		Debug.Log("Weapon EquipWeapon");
+		// swap.
+		GameObject temp;
+		temp = player.weapon;
+		player.weapon = gameObject;
+		player.inventory[index] = temp;
+		
+		// make active/inactive
+		player.weapon.SetActive(true);
+		if(player.inventory[index] != null)
+		{
+			player.inventory[index].SetActive(false);
+		}
 	}
+
 }

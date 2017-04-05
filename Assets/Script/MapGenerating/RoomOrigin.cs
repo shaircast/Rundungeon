@@ -61,7 +61,6 @@ public class RoomOrigin : MonoBehaviour
 				GameObject newTile = Instantiate(tile, transform.position + offset, Quaternion.identity) as GameObject;
 				newTile.name = "Tile";
 				newTile.transform.parent = tileContainer.transform; // roomManager takes tile as child.
-				newTile.layer = LayerMask.NameToLayer("Tile");
 				Tile newTileSetup = newTile.GetComponent<Tile>();
 				newTileSetup.horiPos = w;
 

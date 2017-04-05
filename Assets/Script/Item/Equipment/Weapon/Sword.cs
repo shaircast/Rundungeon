@@ -17,28 +17,16 @@ public class Sword : Weapon
 	{
 		
 	}
-	override public void EquipWeapon()
+	override public void EquipWeapon(int index)
 	{
-		base.EquipWeapon();
+		base.EquipWeapon(index);
 		Debug.Log("Sword Equipweapon");
-		EquipSword();
+		EquipSword(index);
 	}
 
-	void EquipSword() // instantiate and set position.
+	void EquipSword(int index) // set position.
 	{
-		PlayerController player = PlayerController.singleton;
-		GameObject newSword = Instantiate(swordPrefab, player.transform.position, Quaternion.identity) as GameObject;
 		
-		if(player.goRight)
-		{
-			newSword.transform.eulerAngles = new Vector3(0, 0, -90f);
-		}
-		else
-		{
-			newSword.transform.eulerAngles = new Vector3(0, 0, 90f);
-		}
-		newSword.transform.parent = player.transform;
-		player.weapon = newSword;
 	}
 
 }

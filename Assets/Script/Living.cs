@@ -5,6 +5,7 @@ using UnityEngine;
 public class Living : MonoBehaviour
 {
     public Rigidbody2D rb2d;
+    public int maxHp;
     public int hp;
     public float moveSpeed;
     public float jumpHeight;

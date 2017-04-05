@@ -8,9 +8,10 @@ public class TrapBasis : MonoBehaviour
 	public GameObject effectToObject; // buff will be attached to player.
 	
 	// Use this for initialization
-	void Start ()
+	void Awake ()
 	{
 		triggered = false;
+		gameObject.layer = LayerMask.NameToLayer("Tile");
 	}
 	
 	protected GameObject giveBuffToOther(Collision2D other) // make buff and make it child. returns the buff.
